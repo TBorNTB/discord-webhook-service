@@ -25,6 +25,7 @@ public class DiscordWebhookService {
                 .map(summary -> {
                     String message = String.format(
                             """
+                                    @everyone
                                     📌 **[%s] 알림 요약**
                                     
                                     **%s**
