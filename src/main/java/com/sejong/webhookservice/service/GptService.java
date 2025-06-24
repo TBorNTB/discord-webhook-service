@@ -23,7 +23,11 @@ public class GptService {
 //    temperature: 0.7 → 창의성과 다양성 제어
 //
     public Mono<String> summarize(String type, String title, String body) {
-        String systemMsg = "너는 GitHub 활동을 요약해서 전송하는 도우미야. 요약은 간결하면서도 중요한 포인트를 포함해야 해.";
+        String systemMsg = """
+                너는 GitHub 활동을 3줄로 요약해서 전송하는 도우미야.
+                요약은 간결하면서도 핵심 포인트를 담아야 해.
+                포맷은 꼭 줄바꿈 포함해서 3줄이 되도록 해줘.
+                """;
         String userMsg = String.format("[%s] %s\n\n%s", type.toUpperCase(), title, body);
 
         OpenAiRequest request = new OpenAiRequest(

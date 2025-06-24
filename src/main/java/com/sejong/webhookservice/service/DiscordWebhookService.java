@@ -23,7 +23,23 @@ public class DiscordWebhookService {
     public void sendSummarizedAlert(String type, String title, String body, String url) {
         gptService.summarize(type, title, body)
                 .map(summary -> {
-                    String message = String.format("📌 **%s 알림**\n%s\n👉 [자세히 보기](%s)", type.toUpperCase(), summary, url);
+                    String message = String.format(
+                            """
+                                    📌 **[%s] 알림 요약**
+                                    
+                                    **%s**
+                                    
+                                    ```markdown
+                                    %s
+                                    ```
+                                    
+                                    👉 [자세히 보기](%s)
+                                    """,
+                            type.toUpperCase(),
+                            title,
+                            summary,
+                            url
+                    );
                     return Map.of("content", message);
                 })
                 .flatMap(payload ->
