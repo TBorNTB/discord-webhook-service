@@ -27,7 +27,7 @@ public class GptService {
         String userMsg = String.format("[%s] %s\n\n%s", type.toUpperCase(), title, body);
 
         OpenAiRequest request = new OpenAiRequest(
-                "gpt-4",
+                "gpt-4o",
                 List.of(
                         new OpenAiRequest.Message("system", systemMsg),
                         new OpenAiRequest.Message("user", userMsg)
