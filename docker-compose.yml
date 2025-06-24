@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  webhook:
+    image: webhook-service:latest
+    container_name: webhook-service
+    ports:
+      - "8080:8080"
+    restart: always
