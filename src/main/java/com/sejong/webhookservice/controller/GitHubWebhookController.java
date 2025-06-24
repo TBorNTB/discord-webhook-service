@@ -20,6 +20,7 @@ public class GitHubWebhookController {
     @PostMapping("/webhook")
     public ResponseEntity<Void> onGithubEvent(@RequestBody Map<String, Object> payload,
                                               @RequestHeader("X-GitHub-Event") String eventType) {
+
         switch (eventType) {
             case "issues" -> handleEvent(payload, "issue", "ISSUE");
             case "pull_request" -> handleEvent(payload, "pull_request", "PR");
