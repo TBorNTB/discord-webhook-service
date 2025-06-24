@@ -36,6 +36,7 @@ public class GptService {
         );
 
         return openAiWebClient.post()
+                .uri("/chat/completions") // 명시적으로 써도 되고, 안 써도 됨
                 .bodyValue(request)
                 .retrieve()
                 .bodyToMono(JsonNode.class)
